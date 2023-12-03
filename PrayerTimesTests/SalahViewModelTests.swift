@@ -45,9 +45,7 @@ class SalahViewModelTests: XCTestCase {
     }
     
     func testTrToEngSuccessfully() throws {
-        
 
-            //Fonksiyonumuzun Turkce karakterleri Ingilizce karakterlere basariyla cevirdigini kontrol ediyoruz
             XCTAssertEqual(self.salahsTimesVievModel.trToEng(string: "Gümüşhane"), "gumushane")
             
     }
