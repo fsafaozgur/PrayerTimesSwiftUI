@@ -9,7 +9,10 @@ import Foundation
 
 
 
-class SalahsViewModel {
+class SalahsViewModel : ObservableObject{
+    
+    var viewSalah : [Salah]?
+    var viewError : ErrorType?
     
     var service : HttpService
     
@@ -48,6 +51,8 @@ class SalahsViewModel {
         }
             
     }
+    
+   
     
     
     func trToEng (string : String) -> String {

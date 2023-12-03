@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct SalahsView: View {
 
     
@@ -109,22 +110,21 @@ struct SalahsView: View {
                                 //load datas
                                 self.salahs = salahs
                                 //dismiss ProgressView()
-                                onProgress = false
+                                self.onProgress = false
                                 
                             case .failure(let error):
                                 //load error message
                                 self.errorMessage = error.description
                                 //present message
-                                showError = true
+                                self.showError = true
                                 //dismiss ProgressView()
-                                onProgress = false
-                                print(errorMessage)
+                                self.onProgress = false
                             default:
                                 print("default")
                         }
                       
                     }
-                    
+        
                 })
                 .alert(isPresented: $showError) {
                     Alert(title: Text("Error!"), message: Text(self.errorMessage ?? "Some Error"), dismissButton: .default(Text("OK")))

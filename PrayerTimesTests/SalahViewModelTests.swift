@@ -50,7 +50,9 @@ class SalahViewModelTests: XCTestCase {
             //Fonksiyonumuzun Turkce karakterleri Ingilizce karakterlere basariyla cevirdigini kontrol ediyoruz
             XCTAssertEqual(self.salahsTimesVievModel.trToEng(string: "Gümüşhane"), "gumushane")
             
-        }}
+    }
+    
+}
 
     
 
