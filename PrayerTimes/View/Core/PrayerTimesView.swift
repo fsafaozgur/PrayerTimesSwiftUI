@@ -19,11 +19,12 @@ struct PrayerTimesView: View {
     
     
     @State var isLinkActive : Bool = false
-    @State var viewModel : PrayerTimesViewModel = PrayerTimesViewModel()
+
     
     //to use only one PrayerListView for both cities and countries, we used [Any] type and if-statements to specify the views
     @State var cities : [Any] = []
     
+    @State var viewModel : PrayerTimesViewModel = PrayerTimesViewModel()
     //API only support Turkey, so others are dummy datas
     @State var countries : [Any] = ["Turkiye", "France", "Germany"]
 

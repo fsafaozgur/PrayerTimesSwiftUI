@@ -10,7 +10,7 @@ import SwiftUI
 struct SalahsView: View {
 
     
-    @State var viewModel : SalahsViewModel = SalahsViewModel()
+    @State var viewModel = SalahsViewModel(service: WebService())
     @State var salahs : [Salah]?
     @State var city : String
     @State var country : String

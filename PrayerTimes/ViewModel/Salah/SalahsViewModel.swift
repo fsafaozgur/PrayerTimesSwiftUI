@@ -11,6 +11,12 @@ import Foundation
 
 class SalahsViewModel {
     
+    var service : HttpService
+    
+    init(service : HttpService) {
+        self.service = service
+    }
+    
     
     func fetchTimes(_ city: String, completition: @escaping (SalahResult?) -> Void) {
         
@@ -29,7 +35,7 @@ class SalahsViewModel {
         request.allHTTPHeaderFields = headers
         
         
-        WebService().fetchDatas(request: request as URLRequest, type:SalahObject.self) { data, error in
+        service.fetchDatas(request: request as URLRequest, type:SalahObject.self) { data, error in
             
             if let error = error {
                 completition(.failure(error))

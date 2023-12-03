@@ -8,9 +8,12 @@
 import Foundation
 
 
-class WebService {
-    
-    
+protocol HttpService {
+    func fetchDatas<T : Codable>(request req : URLRequest, type: T.Type, completition: @escaping (T?, ErrorType?) -> Void)}
+
+
+
+class WebService : HttpService {
     
     
     func fetchDatas<T : Codable>(request req : URLRequest, type: T.Type, completition: @escaping (T?, ErrorType?) -> Void) {
