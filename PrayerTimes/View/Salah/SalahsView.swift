@@ -77,7 +77,7 @@ struct SalahsView: View {
                     
                 Task{
                     //Fetch datas using async method
-                    try await viewModel.fetchTimes(city)
+                    try await viewModel.fetchTimesAsync(city)
                     //Error check
                     if let _ = viewModel.error {
                         self.showError = true

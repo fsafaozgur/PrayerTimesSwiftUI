@@ -91,11 +91,7 @@ struct PrayerTimesView: View {
                 .foregroundColor(.white)
                 .background(Color(.blue))
                 .font(.title2)
-                /*.sheet(isPresented: $onProgress, content: {
-                    ProgressView()
-                })*/
-
-
+                
                 Spacer()
                 
             }

@@ -20,23 +20,12 @@ class SalahsViewModel : ObservableObject{
     }
     
     
-    func fetchTimes(_ city: String) async throws {
+    func fetchTimesAsync(_ city: String) async throws {
         
         let city = trToEng(string: city)
-        
-        let headers = [
-          "content-type": "application/json",
-          "authorization": "apikey 2Wyw6ntUnM0ljtfOkuEAuX:7rekZl5MYoDe2h6fnawju"
-        ]
 
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api.collectapi.com/pray/all?data.city=\(city)")! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
-        
         do{
-            let data = try await service.fetchDatasAsync(request: request as URLRequest, type:SalahObject.self)
+            let data = try await service.fetchDatasAsync(request: EndPoint.getSalahs(city: city).request(), type:SalahObject.self)
             self.result = data.result
         }catch (let error){
             self.error = error as? ErrorType
