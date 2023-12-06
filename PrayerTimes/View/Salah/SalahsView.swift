@@ -49,12 +49,21 @@ struct SalahsView: View {
                         Text("\(country), \(city)")
                             .foregroundColor(.black)
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        
-                        Text(TimeFormat.fetchTime())
-                            .foregroundColor(.black)
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             .padding()
                         
+                        Text(viewModel.date ?? "Unknown Location")
+                            .foregroundColor(.black)
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            .padding(.bottom)
+                        
+                        Text("Next Prayer Time")
+                            .foregroundColor(.black)
+                            .font(.headline)
+
+                        Text(viewModel.lastingTime ?? "Unknown Time")
+                            .foregroundColor(.black)
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+
 
                         VStack{
                             ForEach(viewModel.result ?? [], id: \.self) { salah in
@@ -62,7 +71,6 @@ struct SalahsView: View {
                                 
                             }
                         }
-                        //.frame(height: UIScreen.main.bounds.height * 0.36)
                         
                         Spacer()
                         
@@ -70,12 +78,14 @@ struct SalahsView: View {
                     .frame(width: UIScreen.main.bounds.width)
                     .edgesIgnoringSafeArea(.all)
                     .background(Color(.systemGreen))
-
+                    
                 }
+   
             }
             .onAppear(perform: {
-                    
+
                 Task{
+
                     //Fetch datas using async method
                     try await viewModel.fetchTimesAsync(city)
                     //Error check
@@ -84,8 +94,9 @@ struct SalahsView: View {
                     }
                     //dismiss ProgressView()
                     self.onProgress = false
-                    
+
                 }
+                
 
                     
                 /*In case of using fetching data using completition method*/
@@ -95,9 +106,10 @@ struct SalahsView: View {
                     switch timeResult {
                         case .success(let salahs):
                             //load datas
-                            self.salahs = salahs
+                            self?.salahs = salahs
                             //dismiss ProgressView()
                             self.onProgress = false
+                            
                                 
                         case .failure(let error):
                             //load error message
@@ -106,11 +118,12 @@ struct SalahsView: View {
                             self.showError = true
                             //dismiss ProgressView()
                             self.onProgress = false
+                            
                         default:
                             print("default")
-                     }
-                 }
-                 */
+                    
+                 }*/
+                 
         
             })
             .alert(isPresented: $showError) {

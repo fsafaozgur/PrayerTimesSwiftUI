@@ -23,7 +23,7 @@ struct SalahsCellView: View {
             Text(salah.saat)
                 .padding()
                 .font(.headline)
-                //.frame(width: UIScreen.main.bounds.width * 0.6)
+
         }
         .foregroundColor(.white)
         .frame(width: UIScreen.main.bounds.width * 0.8)
@@ -33,6 +33,6 @@ struct SalahsCellView: View {
 
 struct TimeCellView_Previews: PreviewProvider {
     static var previews: some View {
-        SalahsCellView(salah: Salah(saat: "deneme", vakit: "deneme"))
+        SalahsCellView(salah: Salah(saat: "test", vakit: "test"))
     }
 }
