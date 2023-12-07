@@ -17,6 +17,8 @@ struct SalahsView: View {
     @Binding var onProgress : Bool
     @State var showError : Bool = true
     @State var errorMessage : String?
+    
+    @State var timeToSalah : String?
 
     
         var body: some View {
@@ -60,9 +62,20 @@ struct SalahsView: View {
                             .foregroundColor(.black)
                             .font(.headline)
 
-                        Text(viewModel.lastingTime ?? "Unknown Time")
-                            .foregroundColor(.black)
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        Text(timeToSalah ?? " ")
+                            .onReceive(viewModel.timer) { _ in
+                                if viewModel.remainingSec != 0{
+                                    viewModel.remainingSec = viewModel.remainingSec - 1
+                                    
+                                    timeToSalah =  (Int(viewModel.remainingSec / 3600) == 0 ? "" : "\(Int(viewModel.remainingSec / 3600)) hour ") +
+                                    (Int(viewModel.remainingSec / 60) % 60 == 0 ? "" : "\(Int(viewModel.remainingSec / 60) % 60) minutes ") +
+                                     "\(viewModel.remainingSec % 60) seconds"
+
+                                }else {
+                                    viewModel.calculateTimeToSalah()
+                                }
+                            }
+                            .font(.system(size: 20))
 
 
                         VStack{
@@ -94,6 +107,7 @@ struct SalahsView: View {
                     }
                     //dismiss ProgressView()
                     self.onProgress = false
+                    
 
                 }
                 

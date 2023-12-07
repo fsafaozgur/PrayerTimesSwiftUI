@@ -35,7 +35,9 @@ struct PrayerTimesView: View {
         
             VStack(){
 
-                        
+                Spacer(minLength: UIScreen.main.bounds.height * 0.1)
+
+                
                 Image("TitleImage")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -95,6 +97,9 @@ struct PrayerTimesView: View {
                 Spacer()
                 
             }
+            .frame(width: UIScreen.main.bounds.width)
+            .edgesIgnoringSafeArea(.all)
+            .background(Color(.systemGreen))
             .onAppear(perform: {
                 viewModel.getCities() { cities in
                     if let cities = cities {

@@ -12,17 +12,17 @@ class SalahsViewModel : ObservableObject{
     
     @Published var result : [Salah]?
     @Published var error : ErrorType?
-    @Published var lastingTime : String?
+    @Published var remainingSec : Int = 0
     @Published var date : String?
+    @Published var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     
     var service : HttpService!
     
     init(service : HttpService) {
         self.service = service
-        
+        getDate()
     }
-    
     
     func fetchTimesAsync(_ city: String) async throws {
         
@@ -31,7 +31,7 @@ class SalahsViewModel : ObservableObject{
         do{
             let data = try await service.fetchDatasAsync(request: EndPoint.getSalahs(city: city).request(), type:SalahObject.self)
             self.result = data.result
-            fetchTime()
+            calculateTimeToSalah()
         }catch (let error){
             self.error = error as? ErrorType
         }
@@ -52,21 +52,26 @@ class SalahsViewModel : ObservableObject{
     
     
     
-    func fetchTime() {
-
-        //Date of today
-        let calendar = Calendar.current
+    //Get date of today
+    func getDate() {
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, yyyy"
         formatter.timeZone = TimeZone(abbreviation: "UTC")
         date = formatter.string(from: now)
-        
-        
-        
-        //Calculate time to next salah
+    }
+    
+    
+    //Calculate time to next salah
+    func calculateTimeToSalah() {
+
+        let calendar = Calendar.current
+        let now = Date()
+        let nowSecond = calendar.component(.second, from: now)
         let nowMinute = calendar.component(.minute, from: now)
         let nowHour = calendar.component(.hour, from: now)
+        
+        let nowTotal = nowHour * 3600 + nowMinute * 60 + nowSecond
         
         guard let result = result else {return}
         
@@ -74,24 +79,21 @@ class SalahsViewModel : ObservableObject{
             
             let array = salah.saat.components(separatedBy: ":")
             let intArray = array.map { Int($0)}
-
+            
             guard let salahHour = intArray[0], let salahMinute = intArray[1] else {return }
-                
-            if (nowHour - salahHour) <= 0 {
-                
-                if (nowHour - salahHour) == 0 && (nowMinute - salahMinute) > 0 {
-                    continue
-                }
-                if (nowHour - salahHour) < 0 && (nowMinute - salahMinute) < 0 {
-                    self.lastingTime = "\(salahHour - nowHour) hour \(salahMinute - nowMinute) minutes"
-                }
-                self.lastingTime = "\(salahHour - nowHour) hour \(salahMinute - nowMinute) minutes"
+            
+            let salahTotal = salahHour * 3600 + salahMinute * 60
+            
+            if nowTotal - salahTotal <= 0 {
+                self.remainingSec = salahTotal - nowTotal
                 break
             }
+
         }
+    }
                 
             
-    }
+    
         
         
     
