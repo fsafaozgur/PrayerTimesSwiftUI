@@ -64,12 +64,14 @@ struct SalahsView: View {
 
                         Text(timeToSalah ?? " ")
                             .onReceive(viewModel.timer) { _ in
-                                if viewModel.remainingSec != 0{
-                                    viewModel.remainingSec = viewModel.remainingSec - 1
+
+                                if viewModel.remainingSec != 0 {
+                                    viewModel.remainingSec -= 1
                                     
-                                    timeToSalah =  (Int(viewModel.remainingSec / 3600) == 0 ? "" : "\(Int(viewModel.remainingSec / 3600)) hour ") +
-                                    (Int(viewModel.remainingSec / 60) % 60 == 0 ? "" : "\(Int(viewModel.remainingSec / 60) % 60) minutes ") +
-                                     "\(viewModel.remainingSec % 60) seconds"
+                                    let sec = viewModel.remainingSec
+                                    timeToSalah =  (Int(sec / 3600) == 0 ? "" : "\(Int(sec / 3600)) hour ") +
+                                    (Int(sec / 60) % 60 == 0 ? "" : "\(Int(sec / 60) % 60) minutes ") +
+                                     "\(sec % 60) seconds"
 
                                 }else {
                                     viewModel.calculateTimeToSalah()
