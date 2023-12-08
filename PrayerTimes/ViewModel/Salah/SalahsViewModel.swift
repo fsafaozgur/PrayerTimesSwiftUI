@@ -56,7 +56,7 @@ class SalahsViewModel : ObservableObject{
     func getDate() {
         let now = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, yyyy"
+        formatter.dateFormat = "dd MMMM yyyy"
         formatter.timeZone = TimeZone(abbreviation: "UTC")
         date = formatter.string(from: now)
     }
