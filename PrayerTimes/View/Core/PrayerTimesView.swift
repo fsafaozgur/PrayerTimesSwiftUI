@@ -113,6 +113,15 @@ struct PrayerTimesView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerTimesView()
+        Group{
+            PrayerTimesView()
+                .previewDevice("iphone 11")
+                .previewDisplayName("iPhone 11")
+            PrayerTimesView()
+                .previewDevice("iPhone SE")
+                .previewDisplayName("iPhone SE")
+            
+        }
+        
     }
 }

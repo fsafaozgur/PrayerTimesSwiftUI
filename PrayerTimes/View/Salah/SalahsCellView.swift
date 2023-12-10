@@ -15,12 +15,12 @@ struct SalahsCellView: View {
     var body: some View {
         HStack {
             
-            Text(salah.vakit)
+            Text(salah.salah)
                 .font(.headline)
                 .padding(.horizontal)
             Spacer()
             
-            Text(salah.saat)
+            Text(salah.time)
                 .padding()
                 .font(.headline)
 
@@ -33,6 +33,16 @@ struct SalahsCellView: View {
 
 struct TimeCellView_Previews: PreviewProvider {
     static var previews: some View {
-        SalahsCellView(salah: Salah(saat: "test", vakit: "test"))
+        Group{
+            SalahsCellView(salah: Salah(time: "test", salah: "test"))
+                .previewLayout(.sizeThatFits)
+                .previewDevice("iphone 11")
+                .previewDisplayName("iPhone 11")
+            SalahsCellView(salah: Salah(time: "test", salah: "test"))
+                .previewLayout(.sizeThatFits)
+                .previewDevice("iphone 8")
+                .previewDisplayName("iPhone 8")
+            
+        }
     }
 }

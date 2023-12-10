@@ -77,7 +77,7 @@ class SalahsViewModel : ObservableObject{
         
         for salah in result {
             
-            let array = salah.saat.components(separatedBy: ":")
+            let array = salah.time.components(separatedBy: ":")
             let intArray = array.map { Int($0)}
             
             guard let salahHour = intArray[0], let salahMinute = intArray[1] else {return }

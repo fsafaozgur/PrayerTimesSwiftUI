@@ -16,7 +16,13 @@ struct SalahObject : Codable {
 struct Salah : Codable, Identifiable, Hashable {
     
     var id : UUID?
-    let saat: String
-    let vakit: String
+    let time: String
+    let salah: String
+    
+    
+    private enum CodingKeys : String, CodingKey {
+        case time = "saat"
+        case salah = "vakit"
+    }
 }
 
