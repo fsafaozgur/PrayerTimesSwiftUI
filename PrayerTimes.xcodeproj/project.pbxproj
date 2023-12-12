@@ -16,6 +16,7 @@
 		0631F8B22B18D18900D4F4FE /* SalahsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631F8B12B18D18900D4F4FE /* SalahsView.swift */; };
 		0631F8B52B18D29B00D4F4FE /* SalahsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631F8B42B18D29B00D4F4FE /* SalahsCellView.swift */; };
 		0631F8B82B18D31300D4F4FE /* SalahModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631F8B72B18D31300D4F4FE /* SalahModel.swift */; };
+		0643FBC72B286FA500AAB621 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643FBC62B286FA500AAB621 /* ContentView.swift */; };
 		06516D2D2B1A69F300FD6300 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516D2C2B1A69F300FD6300 /* ErrorType.swift */; };
 		06516D302B1A71A100FD6300 /* SalahResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516D2F2B1A71A100FD6300 /* SalahResult.swift */; };
 		06522C752B1B5911006A3488 /* PrayerTimesVievModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06522C742B1B5911006A3488 /* PrayerTimesVievModel.swift */; };
@@ -52,6 +53,7 @@
 		0631F8B12B18D18900D4F4FE /* SalahsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalahsView.swift; sourceTree = "<group>"; };
 		0631F8B42B18D29B00D4F4FE /* SalahsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalahsCellView.swift; sourceTree = "<group>"; };
 		0631F8B72B18D31300D4F4FE /* SalahModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalahModel.swift; sourceTree = "<group>"; };
+		0643FBC62B286FA500AAB621 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		06516D2C2B1A69F300FD6300 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 		06516D2F2B1A71A100FD6300 /* SalahResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalahResult.swift; sourceTree = "<group>"; };
 		06522C742B1B5911006A3488 /* PrayerTimesVievModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesVievModel.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				0652E5692B1A03D500D8D122 /* Salah */,
 				0652E5682B1A03B500D8D122 /* Core */,
+				0643FBC62B286FA500AAB621 /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				06516D2D2B1A69F300FD6300 /* ErrorType.swift in Sources */,
 				0652E56D2B1A04DE00D8D122 /* SalahsViewModel.swift in Sources */,
 				06522C752B1B5911006A3488 /* PrayerTimesVievModel.swift in Sources */,
+				0643FBC72B286FA500AAB621 /* ContentView.swift in Sources */,
 				0631F89A2B187A0500D4F4FE /* PrayerTimesApp.swift in Sources */,
 				068A7F812B1F13CE005D0F76 /* EndPoint.swift in Sources */,
 				0631F8AA2B1883E800D4F4FE /* PrayerTimesCellView.swift in Sources */,

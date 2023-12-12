@@ -16,13 +16,13 @@ struct SalahsCellView: View {
         HStack {
             
             Text(salah.salah)
-                .font(.headline)
+                .font(.title)
                 .padding(.horizontal)
             Spacer()
             
             Text(salah.time)
                 .padding()
-                .font(.headline)
+                .font(.title)
 
         }
         .foregroundColor(.white)

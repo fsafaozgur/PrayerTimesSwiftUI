@@ -15,8 +15,7 @@ protocol HttpService {
 
 
 class WebService : HttpService {
-    
-    
+        
     func fetchDatasAsync<T : Codable>(request req : URLRequest, type: T.Type) async throws -> T {
         
         let (data,response) =  try await URLSession.shared.data(for: req)

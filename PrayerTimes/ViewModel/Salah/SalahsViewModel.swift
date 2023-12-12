@@ -14,11 +14,19 @@ class SalahsViewModel : ObservableObject{
     @Published var error : ErrorType?
     @Published var remainingSec : Int = 0
     @Published var date : String?
+    @Published var nextSalah : String?
     @Published var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     
-    var service : HttpService!
+    private var service : HttpService!
     
+    
+    init(){
+        self.service = WebService()
+        getDate()
+    }
+    
+    //Adds for testing with MockWebService
     init(service : HttpService) {
         self.service = service
         getDate()
@@ -86,6 +94,7 @@ class SalahsViewModel : ObservableObject{
             
             if nowTotal - salahTotal <= 0 {
                 self.remainingSec = salahTotal - nowTotal
+                self.nextSalah = "Time to \(salah.salah)"
                 break
             }
 

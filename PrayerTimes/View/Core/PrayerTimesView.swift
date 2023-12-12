@@ -9,24 +9,20 @@ import SwiftUI
 
 struct PrayerTimesView: View {
     
+    @EnvironmentObject var salahViewModel : SalahsViewModel
+    @State var viewModel : PrayerTimesViewModel = PrayerTimesViewModel()
+    @AppStorage("city") var selectedCity : String?
+    @AppStorage("country") var selectedCountry : String?
     @State var isCountrySelected : Bool = false
     @State var isCitySelected : Bool = false
-    @State var selectedCountry : String?
-    @State var selectedCity : String?
+    @Binding var selectedItem : Int
     
     //to show ProgressView() until all datas being fetched from server, we used this flag
     @State var onProgress : Bool = false
-    
-    
-    @State var isLinkActive : Bool = false
-
-    
     //to use only one PrayerListView for both cities and countries, we used [Any] type and if-statements to specify the views
     @State var cities : [Any] = []
-    
-    @State var viewModel : PrayerTimesViewModel = PrayerTimesViewModel()
-    //API only support Turkey, so others are dummy datas
-    @State var countries : [Any] = ["Turkiye", "France", "Germany"]
+    //API only support Turkey, added a list view in case of more countries datas is will be added in future
+    @State var countries : [Any] = ["Turkiye"]
 
     
     var body: some View {
@@ -59,7 +55,7 @@ struct PrayerTimesView: View {
                 
                 VStack(spacing: 20){
                     
-                    PrayerTimesCellView(head: "Country:", description: selectedCountry, didSelected: {
+                    PrayerTimesCellView(head: "Country:", description: selectedCountry ?? "Turkiye", didSelected: {
                         isCountrySelected = true
 
                     }).sheet(isPresented: $isCountrySelected) {
@@ -69,7 +65,7 @@ struct PrayerTimesView: View {
                     }
                     
                     
-                    PrayerTimesCellView(head: "City:", description: selectedCity, didSelected: {
+                    PrayerTimesCellView(head: "City:", description: selectedCity ?? "Ankara", didSelected: {
                            isCitySelected = true
                     })
                     .sheet(isPresented: $isCitySelected) {
@@ -81,14 +77,17 @@ struct PrayerTimesView: View {
       
                 }.padding(.vertical)
                 
-                NavigationLink(destination: SalahsView(city: selectedCity ?? "Ankara", country: selectedCountry ?? "Turkey", onProgress: $onProgress), isActive: $isLinkActive) {
-                        Button(action: {
-                            self.onProgress = true
-                            self.isLinkActive = true
-                        }, label: {
-                            Text("Apply")
-                        })
-                }
+                
+                Button(action: {
+                            
+                    Task{
+                        try await salahViewModel.fetchTimesAsync(selectedCity ?? "Ankara")
+                        selectedItem = 1
+                    }
+
+                }, label: {
+                    Text("Apply")
+                })
                 .frame(width: 90, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .foregroundColor(.white)
                 .background(Color(.blue))
@@ -98,7 +97,6 @@ struct PrayerTimesView: View {
                 
             }
             .frame(width: UIScreen.main.bounds.width)
-            .edgesIgnoringSafeArea(.all)
             .background(Color(.systemGreen))
             .onAppear(perform: {
                 viewModel.getCities() { cities in
@@ -111,6 +109,7 @@ struct PrayerTimesView: View {
     } 
 }
 
+/*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group{
@@ -124,4 +123,4 @@ struct ContentView_Previews: PreviewProvider {
         }
         
     }
-}
+}*/

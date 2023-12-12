@@ -11,13 +11,12 @@ import SwiftUI
 struct SalahsView: View {
 
     
-    @ObservedObject var viewModel : SalahsViewModel = SalahsViewModel(service: WebService())
-    @State var city : String
-    @State var country : String
+    @EnvironmentObject var viewModel : SalahsViewModel
+    @AppStorage("city") var city : String?
+    @AppStorage("country") var country : String?
     @Binding var onProgress : Bool
-    @State var showError : Bool = true
+    @State var showError : Bool = false
     @State var errorMessage : String?
-    
     @State var timeToSalah : String?
 
     
@@ -32,23 +31,9 @@ struct SalahsView: View {
                 {
                     VStack(){
                         
-                        Spacer(minLength: UIScreen.main.bounds.height * 0.1)
+                        Spacer()
                         
-                        Image("TitleImage")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .overlay(
-                                Text("PRAYER TIMES")
-                                    .padding()
-                                    .font(.title)
-                                    .foregroundColor(.white)
-                                    .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .center)
-                                    .offset(y: UIScreen.main.bounds.height * -0.08)
-                            )
-                            .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.2, alignment: .bottom)
-                        
-                        
-                        Text("\(country), \(city)")
+                        Text("\(country ?? "Turkiye"), \(city ?? "Ankara")")
                             .foregroundColor(.black)
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             .padding()
@@ -58,7 +43,7 @@ struct SalahsView: View {
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             .padding(.bottom)
                         
-                        Text("Next Prayer Time")
+                        Text(viewModel.nextSalah ?? "Unknown Time")
                             .foregroundColor(.black)
                             .font(.headline)
 
@@ -91,7 +76,6 @@ struct SalahsView: View {
                         
                     }
                     .frame(width: UIScreen.main.bounds.width)
-                    .edgesIgnoringSafeArea(.all)
                     .background(Color(.systemGreen))
                     
                 }
@@ -100,17 +84,14 @@ struct SalahsView: View {
             .onAppear(perform: {
 
                 Task{
-
                     //Fetch datas using async method
-                    try await viewModel.fetchTimesAsync(city)
+                    try await viewModel.fetchTimesAsync(city ?? "Ankara")
                     //Error check
                     if let _ = viewModel.error {
                         self.showError = true
                     }
                     //dismiss ProgressView()
                     self.onProgress = false
-                    
-
                 }
                 
 

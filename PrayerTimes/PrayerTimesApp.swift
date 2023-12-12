@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct PrayerTimesApp: App {
+    
+    var viewModel : SalahsViewModel = SalahsViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            PrayerTimesView()
+            ContentView()
+                .environmentObject(viewModel)
         }
     }
 }
