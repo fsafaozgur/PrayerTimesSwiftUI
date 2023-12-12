@@ -130,6 +130,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		0643FBC82B28897E00AAB621 /* Prayer */ = {
+			isa = PBXGroup;
+			children = (
+				0631F89B2B187A0500D4F4FE /* PrayerTimesView.swift */,
+				0631F8A92B1883E800D4F4FE /* PrayerTimesCellView.swift */,
+				0631F8AD2B188A6F00D4F4FE /* CellListView.swift */,
+			);
+			path = Prayer;
+			sourceTree = "<group>";
+		};
+		0643FBC92B28899C00AAB621 /* Prayer */ = {
+			isa = PBXGroup;
+			children = (
+				06522C742B1B5911006A3488 /* PrayerTimesVievModel.swift */,
+			);
+			path = Prayer;
+			sourceTree = "<group>";
+		};
 		0652E5662B1A036800D8D122 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,9 +162,9 @@
 		0652E5672B1A037900D8D122 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0643FBC82B28897E00AAB621 /* Prayer */,
 				0652E5692B1A03D500D8D122 /* Salah */,
 				0652E5682B1A03B500D8D122 /* Core */,
-				0643FBC62B286FA500AAB621 /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -154,9 +172,7 @@
 		0652E5682B1A03B500D8D122 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				0631F89B2B187A0500D4F4FE /* PrayerTimesView.swift */,
-				0631F8A92B1883E800D4F4FE /* PrayerTimesCellView.swift */,
-				0631F8AD2B188A6F00D4F4FE /* CellListView.swift */,
+				0643FBC62B286FA500AAB621 /* ContentView.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -173,6 +189,7 @@
 		0652E56A2B1A046D00D8D122 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0643FBC92B28899C00AAB621 /* Prayer */,
 				0652E56B2B1A04BF00D8D122 /* Salah */,
 			);
 			path = ViewModel;
@@ -182,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				0652E56C2B1A04DE00D8D122 /* SalahsViewModel.swift */,
-				06522C742B1B5911006A3488 /* PrayerTimesVievModel.swift */,
 			);
 			path = Salah;
 			sourceTree = "<group>";
