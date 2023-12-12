@@ -36,7 +36,7 @@ struct SalahsView: View {
                         Text("\(country ?? "Turkiye"), \(city ?? "Ankara")")
                             .foregroundColor(.black)
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                            .padding()
+                            .padding(.top)
                         
                         Text(viewModel.date ?? "Unknown Location")
                             .foregroundColor(.black)
@@ -45,7 +45,7 @@ struct SalahsView: View {
                         
                         Text(viewModel.nextSalah ?? "Unknown Time")
                             .foregroundColor(.black)
-                            .font(.headline)
+                            .font(.system(size: 20))
 
                         Text(timeToSalah ?? " ")
                             .onReceive(viewModel.timer) { _ in
@@ -62,7 +62,7 @@ struct SalahsView: View {
                                     viewModel.calculateTimeToSalah()
                                 }
                             }
-                            .font(.system(size: 20))
+                            .font(.system(size: 25))
 
 
                         VStack{
