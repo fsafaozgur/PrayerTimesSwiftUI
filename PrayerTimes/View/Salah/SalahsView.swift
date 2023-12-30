@@ -38,12 +38,12 @@ struct SalahsView: View {
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             .padding(.top)
                         
-                        Text(viewModel.date ?? "Unknown Location")
+                        Text(viewModel.date ?? "Unknown")
                             .foregroundColor(.black)
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             .padding(.bottom)
                         
-                        Text(viewModel.nextSalah ?? "Unknown Time")
+                        Text(viewModel.nextSalah ?? "Last Salah has passed")
                             .foregroundColor(.black)
                             .font(.system(size: 20))
 

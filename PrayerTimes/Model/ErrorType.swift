@@ -13,6 +13,7 @@ enum ErrorType : Error {
     case invalidStatusCode (statusCode : Int)
     case invalidData
     case invalidJSONParse
+    case pathError
     
     var description : String {
         switch  self {
@@ -26,6 +27,9 @@ enum ErrorType : Error {
             return "Invalid data"
         case .invalidJSONParse:
             return "JSON parsing process failed"
+        case .pathError:
+            return "JSON file directory not found"
+            
         }
     }
 }

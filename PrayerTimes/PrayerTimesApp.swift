@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct PrayerTimesApp: App {
     
-    var viewModel : SalahsViewModel = SalahsViewModel()
+    var viewModel : SalahsViewModel = SalahsViewModel(service: WebService())
     
     var body: some Scene {
         WindowGroup {

@@ -10,7 +10,7 @@ import SwiftUI
 struct PrayerTimesView: View {
     
     @EnvironmentObject var salahViewModel : SalahsViewModel
-    @State var viewModel : PrayerTimesViewModel = PrayerTimesViewModel()
+    @StateObject var viewModel : PrayerTimesViewModel = PrayerTimesViewModel()
     @AppStorage("city") var selectedCity : String?
     @AppStorage("country") var selectedCountry : String?
     @State var isCountrySelected : Bool = false
@@ -19,10 +19,7 @@ struct PrayerTimesView: View {
     
     //to show ProgressView() until all datas being fetched from server, we used this flag
     @State var onProgress : Bool = false
-    //to use only one PrayerListView for both cities and countries, we used [Any] type and if-statements to specify the views
-    @State var cities : [Any] = []
-    //API only support Turkey, added a list view in case of more countries datas is will be added in future
-    @State var countries : [Any] = ["Turkiye"]
+
 
     
     var body: some View {
@@ -59,7 +56,7 @@ struct PrayerTimesView: View {
                         isCountrySelected = true
 
                     }).sheet(isPresented: $isCountrySelected) {
-                        CellListView(itemArray: $countries, isShown: $isCountrySelected) { item in
+                        CellListView(itemArray: $viewModel.countries, isShown: $isCountrySelected) { item in
                             selectedCountry = item
                         }
                     }
@@ -69,7 +66,7 @@ struct PrayerTimesView: View {
                            isCitySelected = true
                     })
                     .sheet(isPresented: $isCitySelected) {
-                        CellListView(itemArray: $cities, isShown: $isCitySelected) { item in
+                        CellListView(itemArray: $viewModel.cities, isShown: $isCitySelected) { item in
                             selectedCity = item
                         }
                     }
@@ -99,11 +96,17 @@ struct PrayerTimesView: View {
             .frame(width: UIScreen.main.bounds.width)
             .background(Color(.systemGreen))
             .onAppear(perform: {
-                viewModel.getCities() { cities in
-                    if let cities = cities {
-                        self.cities = cities as [Any]
+                Task{
+                    do{
+                        try await viewModel.getCities()
+                    }catch(let error){
+                        if let error = error as? ErrorType {
+                            //for now, not need to handle error, if we want, we can do it like SalahViewModel
+                            print(error.description)
+                        }
                     }
                 }
+                    
             })
         }
     } 

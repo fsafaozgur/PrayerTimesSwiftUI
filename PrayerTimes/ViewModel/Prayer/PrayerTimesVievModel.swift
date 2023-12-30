@@ -8,38 +8,41 @@
 import Foundation
 
 
-class PrayerTimesViewModel {
+class PrayerTimesViewModel : ObservableObject{
     
+    //to use only one PrayerListView for both cities and countries, we used [Any] type and if-statements to specify the views
+    @Published var cities : [Any] = []
     
-    func getCities (completition: @escaping (([City]?) -> Void)) {
+    //API only support Turkey, added a list view in case of more countries datas is will be added in future
+    @Published var countries : [Any] = ["Turkiye"]
+    
+
+    func getCities() async throws{
         
         if let path = Bundle.main.path(forResource: "cities", ofType: "json") {
 
             guard let url = URL(fileURLWithPath: path) as? URL else {
-                print("DEBUG: URL error")
-                return
+                throw ErrorType.pathError
             }
             
             guard let data = try? Data(contentsOf: url) else {
-                print(ErrorType.invalidData.description)
-                return
-                
+                throw ErrorType.invalidData
             }
 
             do {
                 let result = try JSONDecoder().decode(Cities.self, from: data)
-                completition(result.city)
-            } catch  {
-                print(ErrorType.invalidJSONParse.description)
+                //send ui changes to main thread
+                await MainActor.run {
+                    self.cities = result.city
+                }
+            } catch {
+                throw ErrorType.invalidJSONParse
             }
         }
-            
-            
-            
-            
-            
+                
     }
-        
+    
+    
 }
     
     

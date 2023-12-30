@@ -21,16 +21,13 @@ class SalahsViewModel : ObservableObject{
     private var service : HttpService!
     
     
-    init(){
-        self.service = WebService()
-        getDate()
-    }
-    
-    //Adds for testing with MockWebService
+    //Adds for testing with MockWebService and also dependency injection
     init(service : HttpService) {
         self.service = service
         getDate()
     }
+    
+    
     
     func fetchTimesAsync(_ city: String) async throws {
         
@@ -38,10 +35,18 @@ class SalahsViewModel : ObservableObject{
 
         do{
             let data = try await service.fetchDatasAsync(request: EndPoint.getSalahs(city: city).request(), type:SalahObject.self)
-            self.result = data.result
-            calculateTimeToSalah()
+            
+            //send ui changes to main thread
+            await MainActor.run {
+                self.result = data.result
+                calculateTimeToSalah()
+            }
+
         }catch (let error){
-            self.error = error as? ErrorType
+            //send ui changes(alert) to main thread if error occured
+            await MainActor.run {
+                self.error = error as? ErrorType
+            }
         }
     }
     
