@@ -42,10 +42,10 @@ class SalahsViewModel : ObservableObject{
                 calculateTimeToSalah()
             }
 
-        }catch (let error){
+        }catch let error as ErrorType {
             //send ui changes(alert) to main thread if error occured
             await MainActor.run {
-                self.error = error as? ErrorType
+                self.error = error
             }
         }
     }

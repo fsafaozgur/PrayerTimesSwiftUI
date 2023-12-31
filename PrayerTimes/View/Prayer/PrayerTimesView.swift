@@ -99,11 +99,9 @@ struct PrayerTimesView: View {
                 Task{
                     do{
                         try await viewModel.getCities()
-                    }catch(let error){
-                        if let error = error as? ErrorType {
-                            //for now, not need to handle error, if we want, we can do it like SalahViewModel
-                            print(error.description)
-                        }
+                    }catch let error as ErrorType {
+                        //for now, not need to handle error, if we want, we can do it like SalahsView
+                        print(error.description)
                     }
                 }
                     

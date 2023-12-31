@@ -19,7 +19,7 @@ class PrayerTimesViewModel : ObservableObject{
 
     func getCities() async throws{
         
-        if let path = Bundle.main.path(forResource: "cities", ofType: "json") {
+        if let path = Bundle.main.path(forResource: "citie", ofType: "json") {
 
             guard let url = URL(fileURLWithPath: path) as? URL else {
                 throw ErrorType.pathError
