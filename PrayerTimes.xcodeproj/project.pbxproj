@@ -29,6 +29,7 @@
 		0658CBC42B1C87C400A96B01 /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0658CBC32B1C87C400A96B01 /* Mockable.swift */; };
 		0658CBC82B1C8F4600A96B01 /* Salahs.json in Resources */ = {isa = PBXBuildFile; fileRef = 0658CBC72B1C8F4600A96B01 /* Salahs.json */; };
 		068A7F812B1F13CE005D0F76 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068A7F802B1F13CE005D0F76 /* EndPoint.swift */; };
+		06B108AB2B45236A00744F56 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06B108AD2B45236A00744F56 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		0658CBC32B1C87C400A96B01 /* Mockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockable.swift; sourceTree = "<group>"; };
 		0658CBC72B1C8F4600A96B01 /* Salahs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Salahs.json; sourceTree = "<group>"; };
 		068A7F802B1F13CE005D0F76 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		06B108AC2B45236A00744F56 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		06B108AE2B4523D400744F56 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,7 @@
 				0631F89D2B187A0600D4F4FE /* Assets.xcassets */,
 				0631F8A22B187A0600D4F4FE /* Info.plist */,
 				0631F89F2B187A0600D4F4FE /* Preview Content */,
+				06B108AD2B45236A00744F56 /* Localizable.strings */,
 			);
 			path = PrayerTimes;
 			sourceTree = "<group>";
@@ -286,6 +290,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				tr,
 				Base,
 			);
 			mainGroup = 0631F88D2B187A0500D4F4FE;
@@ -305,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06522C7C2B1B5FB2006A3488 /* cities.json in Resources */,
+				06B108AB2B45236A00744F56 /* Localizable.strings in Resources */,
 				0631F8A12B187A0600D4F4FE /* Preview Assets.xcassets in Resources */,
 				0631F89E2B187A0600D4F4FE /* Assets.xcassets in Resources */,
 			);
@@ -363,11 +369,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		06B108AD2B45236A00744F56 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06B108AC2B45236A00744F56 /* en */,
+				06B108AE2B4523D400744F56 /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		0631F8A32B187A0600D4F4FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -421,6 +440,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -429,6 +449,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -475,6 +496,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
