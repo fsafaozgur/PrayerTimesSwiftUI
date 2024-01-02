@@ -1,5 +1,5 @@
 
-# PrayerTimes Uygulaması
+# PrayerTimes Uygulaması (EN-TR Dil Desteği ile)
 
 ## Giriş
 Proje kapsamında; SwiftUI kullanılarak ve Unit Testler de yapılmak suretiyle, kaynak olarak bir Namaz Vakitleri API kullanılarak Türkiye'de yer alan tüm şehirlerdeki namaz vakitlerini kullanıcıya sunan bir Namaz Vakti uygulaması MVVM tasarım kalıbı ile tasarlanmıştır. 
