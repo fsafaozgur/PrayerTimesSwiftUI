@@ -16,13 +16,13 @@ struct ContentView: View {
         TabView(selection: $selection){
             SalahsView(onProgress: $onProgress)
                 .tabItem {
-                    Label("Prayers", systemImage: "1.circle")
+                    Label("Prayers", systemImage: "clock")
                 }
                 .tag(1)
             
             PrayerTimesView(selectedItem: $selection)
                 .tabItem {
-                    Label("Settings", systemImage: "2.circle")
+                    Label("Settings", systemImage: "globe")
                 }
                 .tag(2)
         }
