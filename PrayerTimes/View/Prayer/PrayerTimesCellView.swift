@@ -25,7 +25,7 @@ struct PrayerTimesCellView: View {
             Text(description ?? "Please select")
                 .padding()
                 .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.05, alignment: .leading)
-                .background(Color(.systemGray5))
+                .background(Color.backgroundTextPrayerTimesViewCell)
 
 
         

@@ -76,7 +76,7 @@ struct SalahsView: View {
                         
                     }
                     .frame(width: UIScreen.main.bounds.width)
-                    .background(Color(.systemGreen))
+                    .background(Color.backgroundSalahView)
                     
                 }
    

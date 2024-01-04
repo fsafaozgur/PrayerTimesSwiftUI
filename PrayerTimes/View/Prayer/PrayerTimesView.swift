@@ -87,14 +87,14 @@ struct PrayerTimesView: View {
                 })
                 .frame(width: 90, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .foregroundColor(.white)
-                .background(Color(.blue))
+                .background(Color.buttonPrayerTimesView)
                 .font(.title2)
                 
                 Spacer()
                 
             }
             .frame(width: UIScreen.main.bounds.width)
-            .background(Color(.systemGreen))
+            .background(Color.backgroundPrayerTimesView)
             .onAppear(perform: {
                 Task{
                     do{

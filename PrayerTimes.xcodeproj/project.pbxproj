@@ -29,6 +29,7 @@
 		0658CBC42B1C87C400A96B01 /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0658CBC32B1C87C400A96B01 /* Mockable.swift */; };
 		0658CBC82B1C8F4600A96B01 /* Salahs.json in Resources */ = {isa = PBXBuildFile; fileRef = 0658CBC72B1C8F4600A96B01 /* Salahs.json */; };
 		068A7F812B1F13CE005D0F76 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068A7F802B1F13CE005D0F76 /* EndPoint.swift */; };
+		069572A12B46BBDC006A873D /* Color+PrayerTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069572A02B46BBDC006A873D /* Color+PrayerTimes.swift */; };
 		06B108AB2B45236A00744F56 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06B108AD2B45236A00744F56 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		0658CBC32B1C87C400A96B01 /* Mockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockable.swift; sourceTree = "<group>"; };
 		0658CBC72B1C8F4600A96B01 /* Salahs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Salahs.json; sourceTree = "<group>"; };
 		068A7F802B1F13CE005D0F76 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		069572A02B46BBDC006A873D /* Color+PrayerTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+PrayerTimes.swift"; sourceTree = "<group>"; };
 		06B108AC2B45236A00744F56 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		06B108AE2B4523D400744F56 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 		0631F8982B187A0500D4F4FE /* PrayerTimes */ = {
 			isa = PBXGroup;
 			children = (
+				0695729F2B46BBBF006A873D /* Extensions */,
 				0652E56F2B1A04FD00D8D122 /* Services */,
 				0652E56A2B1A046D00D8D122 /* ViewModel */,
 				0652E5672B1A037900D8D122 /* View */,
@@ -228,6 +231,14 @@
 			path = PrayerTimesTests;
 			sourceTree = "<group>";
 		};
+		0695729F2B46BBBF006A873D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				069572A02B46BBDC006A873D /* Color+PrayerTimes.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -332,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06522C782B1B5957006A3488 /* Cities.swift in Sources */,
+				069572A12B46BBDC006A873D /* Color+PrayerTimes.swift in Sources */,
 				0652E5712B1A050B00D8D122 /* WebService.swift in Sources */,
 				0631F8AE2B188A6F00D4F4FE /* CellListView.swift in Sources */,
 				0631F8B22B18D18900D4F4FE /* SalahsView.swift in Sources */,
